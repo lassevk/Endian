@@ -1,1 +1,5 @@
-<Solution />
+<Solution>
+  <Project Path="Endian.Extensions.Hosting/Endian.Extensions.Hosting.csproj" />
+  <Project Path="Endian.Tests/Endian.Tests.csproj" />
+  <Project Path="Endian/Endian.csproj" />
+</Solution>
