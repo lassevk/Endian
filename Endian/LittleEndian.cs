@@ -1,114 +1,116 @@
 namespace Endian;
 
+using System.Buffers.Binary;
+
 public sealed class LittleEndian : IEndianReaderWriter
 {
     public ushort ReadUInt16(ReadOnlySpan<byte> data)
     {
-        throw new NotImplementedException();
+        return BinaryPrimitives.ReadUInt16LittleEndian(data);
     }
 
     public short ReadInt16(ReadOnlySpan<byte> data)
     {
-        throw new NotImplementedException();
+        return BinaryPrimitives.ReadInt16LittleEndian(data);
     }
 
     public uint ReadUInt32(ReadOnlySpan<byte> data)
     {
-        throw new NotImplementedException();
+        return BinaryPrimitives.ReadUInt32LittleEndian(data);
     }
 
     public int ReadInt32(ReadOnlySpan<byte> data)
     {
-        throw new NotImplementedException();
+        return BinaryPrimitives.ReadInt32LittleEndian(data);
     }
 
     public ulong ReadUInt64(ReadOnlySpan<byte> data)
     {
-        throw new NotImplementedException();
+        return BinaryPrimitives.ReadUInt64LittleEndian(data);
     }
 
     public long ReadInt64(ReadOnlySpan<byte> data)
     {
-        throw new NotImplementedException();
+        return BinaryPrimitives.ReadInt64LittleEndian(data);
     }
 
     public UInt128 ReadUInt128(ReadOnlySpan<byte> data)
     {
-        throw new NotImplementedException();
+        return BinaryPrimitives.ReadUInt128LittleEndian(data);
     }
 
     public Int128 ReadInt128(ReadOnlySpan<byte> data)
     {
-        throw new NotImplementedException();
+        return BinaryPrimitives.ReadInt128LittleEndian(data);
     }
 
     public Half ReadHalf(ReadOnlySpan<byte> data)
     {
-        throw new NotImplementedException();
+        return BinaryPrimitives.ReadHalfLittleEndian(data);
     }
 
     public float ReadSingle(ReadOnlySpan<byte> data)
     {
-        throw new NotImplementedException();
+        return BinaryPrimitives.ReadSingleLittleEndian(data);
     }
 
     public double ReadDouble(ReadOnlySpan<byte> data)
     {
-        throw new NotImplementedException();
+        return BinaryPrimitives.ReadDoubleLittleEndian(data);
     }
 
     public void Write(Span<byte> data, ushort value)
     {
-        throw new NotImplementedException();
+        BinaryPrimitives.WriteUInt16LittleEndian(data, value);
     }
 
     public void Write(Span<byte> data, short value)
     {
-        throw new NotImplementedException();
+        BinaryPrimitives.WriteInt16LittleEndian(data, value);
     }
 
     public void Write(Span<byte> data, uint value)
     {
-        throw new NotImplementedException();
+        BinaryPrimitives.WriteUInt32LittleEndian(data, value);
     }
 
     public void Write(Span<byte> data, int value)
     {
-        throw new NotImplementedException();
+        BinaryPrimitives.WriteInt32LittleEndian(data, value);
     }
 
     public void Write(Span<byte> data, ulong value)
     {
-        throw new NotImplementedException();
+        BinaryPrimitives.WriteUInt64LittleEndian(data, value);
     }
 
     public void Write(Span<byte> data, long value)
     {
-        throw new NotImplementedException();
+        BinaryPrimitives.WriteInt64LittleEndian(data, value);
     }
 
     public void Write(Span<byte> data, UInt128 value)
     {
-        throw new NotImplementedException();
+        BinaryPrimitives.WriteUInt128LittleEndian(data, value);
     }
 
     public void Write(Span<byte> data, Int128 value)
     {
-        throw new NotImplementedException();
+        BinaryPrimitives.WriteInt128LittleEndian(data, value);
     }
 
     public void Write(Span<byte> data, Half value)
     {
-        throw new NotImplementedException();
+        BinaryPrimitives.WriteHalfLittleEndian(data, value);
     }
 
     public void Write(Span<byte> data, float value)
     {
-        throw new NotImplementedException();
+        BinaryPrimitives.WriteSingleLittleEndian(data, value);
     }
 
     public void Write(Span<byte> data, double value)
     {
-        throw new NotImplementedException();
+        BinaryPrimitives.WriteDoubleLittleEndian(data, value);
     }
 }

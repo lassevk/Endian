@@ -4,7 +4,7 @@ namespace Endian.Tests;
 
 public sealed class LittleEndianTests
 {
-    private static readonly UInt128 UInt128Value = ((UInt128)0x0123456789ABCDEFul << 64) | 0xFEDCBA9876543210ul;
+    private static readonly UInt128 _uInt128Value = ((UInt128)0x0123456789ABCDEFul << 64) | 0xFEDCBA9876543210ul;
     private readonly LittleEndian _endian = new();
 
     [Test]
@@ -46,7 +46,7 @@ public sealed class LittleEndianTests
     [Test]
     public void ReadUInt128()
     {
-        Assert.That(_endian.ReadUInt128([0x10, 0x32, 0x54, 0x76, 0x98, 0xBA, 0xDC, 0xFE, 0xEF, 0xCD, 0xAB, 0x89, 0x67, 0x45, 0x23, 0x01]), Is.EqualTo(UInt128Value));
+        Assert.That(_endian.ReadUInt128([0x10, 0x32, 0x54, 0x76, 0x98, 0xBA, 0xDC, 0xFE, 0xEF, 0xCD, 0xAB, 0x89, 0x67, 0x45, 0x23, 0x01]), Is.EqualTo(_uInt128Value));
     }
 
     [Test]
@@ -138,7 +138,7 @@ public sealed class LittleEndianTests
     {
         Span<byte> data = stackalloc byte[16];
 
-        _endian.Write(data, UInt128Value);
+        _endian.Write(data, _uInt128Value);
 
         Assert.That(data.ToArray(), Is.EqualTo(new byte[] { 0x10, 0x32, 0x54, 0x76, 0x98, 0xBA, 0xDC, 0xFE, 0xEF, 0xCD, 0xAB, 0x89, 0x67, 0x45, 0x23, 0x01 }));
     }
