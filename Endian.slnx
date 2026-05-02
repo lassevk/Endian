@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="Endian.Extensions.DependencyInjection/Endian.Extensions.DependencyInjection.csproj" />
+  <Project Path="Endian.Extensions.DependencyInjection.Tests/Endian.Extensions.DependencyInjection.Tests.csproj" />
   <Project Path="Endian.Tests/Endian.Tests.csproj" />
   <Project Path="Endian/Endian.csproj" />
 </Solution>
