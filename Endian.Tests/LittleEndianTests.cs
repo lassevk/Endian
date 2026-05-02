@@ -4,6 +4,7 @@ namespace Endian.Tests;
 
 public sealed class LittleEndianTests
 {
+    private static readonly UInt128 UInt128Value = ((UInt128)0x0123456789ABCDEFul << 64) | 0xFEDCBA9876543210ul;
     private readonly LittleEndian _endian = new();
 
     [Test]
@@ -40,6 +41,24 @@ public sealed class LittleEndianTests
     public void ReadInt64()
     {
         Assert.That(_endian.ReadInt64([0xEB, 0x7E, 0x16, 0x82, 0x0B, 0xEF, 0xDD, 0xEE]), Is.EqualTo(-1234567890123456789L));
+    }
+
+    [Test]
+    public void ReadUInt128()
+    {
+        Assert.That(_endian.ReadUInt128([0x10, 0x32, 0x54, 0x76, 0x98, 0xBA, 0xDC, 0xFE, 0xEF, 0xCD, 0xAB, 0x89, 0x67, 0x45, 0x23, 0x01]), Is.EqualTo(UInt128Value));
+    }
+
+    [Test]
+    public void ReadInt128()
+    {
+        Assert.That(_endian.ReadInt128([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80]), Is.EqualTo(Int128.MinValue));
+    }
+
+    [Test]
+    public void ReadHalf()
+    {
+        Assert.That(_endian.ReadHalf([0x00, 0x3E]), Is.EqualTo((Half)1.5f));
     }
 
     [Test]
@@ -112,6 +131,36 @@ public sealed class LittleEndianTests
         _endian.Write(data, -1234567890123456789L);
 
         Assert.That(data.ToArray(), Is.EqualTo(new byte[] { 0xEB, 0x7E, 0x16, 0x82, 0x0B, 0xEF, 0xDD, 0xEE }));
+    }
+
+    [Test]
+    public void WriteUInt128()
+    {
+        Span<byte> data = stackalloc byte[16];
+
+        _endian.Write(data, UInt128Value);
+
+        Assert.That(data.ToArray(), Is.EqualTo(new byte[] { 0x10, 0x32, 0x54, 0x76, 0x98, 0xBA, 0xDC, 0xFE, 0xEF, 0xCD, 0xAB, 0x89, 0x67, 0x45, 0x23, 0x01 }));
+    }
+
+    [Test]
+    public void WriteInt128()
+    {
+        Span<byte> data = stackalloc byte[16];
+
+        _endian.Write(data, Int128.MinValue);
+
+        Assert.That(data.ToArray(), Is.EqualTo(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80 }));
+    }
+
+    [Test]
+    public void WriteHalf()
+    {
+        Span<byte> data = stackalloc byte[sizeof(ushort)];
+
+        _endian.Write(data, (Half)1.5f);
+
+        Assert.That(data.ToArray(), Is.EqualTo(new byte[] { 0x00, 0x3E }));
     }
 
     [Test]

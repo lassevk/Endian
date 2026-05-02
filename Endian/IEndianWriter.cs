@@ -11,6 +11,9 @@ public interface IEndianWriter
     void Write(Span<byte> data, int value);
     void Write(Span<byte> data, ulong value);
     void Write(Span<byte> data, long value);
+    void Write(Span<byte> data, UInt128 value);
+    void Write(Span<byte> data, Int128 value);
+    void Write(Span<byte> data, Half value);
     void Write(Span<byte> data, float value);
     void Write(Span<byte> data, double value);
 }

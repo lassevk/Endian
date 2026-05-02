@@ -112,6 +112,60 @@ public static class EndianReaderExtensions
             return reader.ReadInt64(buffer);
         }
 
+        public UInt128 ReadUInt128(Stream stream)
+        {
+            ArgumentNullException.ThrowIfNull(stream);
+
+            Span<byte> buffer = stackalloc byte[16];
+            stream.ReadExactly(buffer);
+            return reader.ReadUInt128(buffer);
+        }
+
+        public async ValueTask<UInt128> ReadUInt128Async(Stream stream, CancellationToken cancellationToken = default)
+        {
+            ArgumentNullException.ThrowIfNull(stream);
+
+            byte[] buffer = new byte[16];
+            await stream.ReadExactlyAsync(buffer.AsMemory(), cancellationToken);
+            return reader.ReadUInt128(buffer);
+        }
+
+        public Int128 ReadInt128(Stream stream)
+        {
+            ArgumentNullException.ThrowIfNull(stream);
+
+            Span<byte> buffer = stackalloc byte[16];
+            stream.ReadExactly(buffer);
+            return reader.ReadInt128(buffer);
+        }
+
+        public async ValueTask<Int128> ReadInt128Async(Stream stream, CancellationToken cancellationToken = default)
+        {
+            ArgumentNullException.ThrowIfNull(stream);
+
+            byte[] buffer = new byte[16];
+            await stream.ReadExactlyAsync(buffer.AsMemory(), cancellationToken);
+            return reader.ReadInt128(buffer);
+        }
+
+        public Half ReadHalf(Stream stream)
+        {
+            ArgumentNullException.ThrowIfNull(stream);
+
+            Span<byte> buffer = stackalloc byte[sizeof(ushort)];
+            stream.ReadExactly(buffer);
+            return reader.ReadHalf(buffer);
+        }
+
+        public async ValueTask<Half> ReadHalfAsync(Stream stream, CancellationToken cancellationToken = default)
+        {
+            ArgumentNullException.ThrowIfNull(stream);
+
+            byte[] buffer = new byte[sizeof(ushort)];
+            await stream.ReadExactlyAsync(buffer.AsMemory(), cancellationToken);
+            return reader.ReadHalf(buffer);
+        }
+
         public float ReadSingle(Stream stream)
         {
             ArgumentNullException.ThrowIfNull(stream);

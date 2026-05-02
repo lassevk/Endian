@@ -14,6 +14,10 @@ public interface IEndianReader
     ulong ReadUInt64(ReadOnlySpan<byte> data);
     long ReadInt64(ReadOnlySpan<byte> data);
 
+    UInt128 ReadUInt128(ReadOnlySpan<byte> data);
+    Int128 ReadInt128(ReadOnlySpan<byte> data);
+
+    Half ReadHalf(ReadOnlySpan<byte> data);
     float ReadSingle(ReadOnlySpan<byte> data);
     double ReadDouble(ReadOnlySpan<byte> data);
 }

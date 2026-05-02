@@ -32,6 +32,21 @@ public sealed class BigEndian : IEndianReaderWriter
         throw new NotImplementedException();
     }
 
+    public UInt128 ReadUInt128(ReadOnlySpan<byte> data)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Int128 ReadInt128(ReadOnlySpan<byte> data)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Half ReadHalf(ReadOnlySpan<byte> data)
+    {
+        throw new NotImplementedException();
+    }
+
     public float ReadSingle(ReadOnlySpan<byte> data)
     {
         throw new NotImplementedException();
@@ -68,6 +83,21 @@ public sealed class BigEndian : IEndianReaderWriter
     }
 
     public void Write(Span<byte> data, long value)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Write(Span<byte> data, UInt128 value)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Write(Span<byte> data, Int128 value)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Write(Span<byte> data, Half value)
     {
         throw new NotImplementedException();
     }

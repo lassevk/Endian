@@ -112,6 +112,60 @@ public static class EndianWriterExtensions
             await stream.WriteAsync(buffer.AsMemory(), cancellationToken);
         }
 
+        public void Write(Stream stream, UInt128 value)
+        {
+            ArgumentNullException.ThrowIfNull(stream);
+
+            Span<byte> buffer = stackalloc byte[16];
+            writer.Write(buffer, value);
+            stream.Write(buffer);
+        }
+
+        public async ValueTask WriteAsync(Stream stream, UInt128 value, CancellationToken cancellationToken = default)
+        {
+            ArgumentNullException.ThrowIfNull(stream);
+
+            byte[] buffer = new byte[16];
+            writer.Write(buffer, value);
+            await stream.WriteAsync(buffer.AsMemory(), cancellationToken);
+        }
+
+        public void Write(Stream stream, Int128 value)
+        {
+            ArgumentNullException.ThrowIfNull(stream);
+
+            Span<byte> buffer = stackalloc byte[16];
+            writer.Write(buffer, value);
+            stream.Write(buffer);
+        }
+
+        public async ValueTask WriteAsync(Stream stream, Int128 value, CancellationToken cancellationToken = default)
+        {
+            ArgumentNullException.ThrowIfNull(stream);
+
+            byte[] buffer = new byte[16];
+            writer.Write(buffer, value);
+            await stream.WriteAsync(buffer.AsMemory(), cancellationToken);
+        }
+
+        public void Write(Stream stream, Half value)
+        {
+            ArgumentNullException.ThrowIfNull(stream);
+
+            Span<byte> buffer = stackalloc byte[sizeof(ushort)];
+            writer.Write(buffer, value);
+            stream.Write(buffer);
+        }
+
+        public async ValueTask WriteAsync(Stream stream, Half value, CancellationToken cancellationToken = default)
+        {
+            ArgumentNullException.ThrowIfNull(stream);
+
+            byte[] buffer = new byte[sizeof(ushort)];
+            writer.Write(buffer, value);
+            await stream.WriteAsync(buffer.AsMemory(), cancellationToken);
+        }
+
         public void Write(Stream stream, float value)
         {
             ArgumentNullException.ThrowIfNull(stream);
